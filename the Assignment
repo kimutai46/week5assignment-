@@ -1,0 +1,28 @@
+with open("input.txt", "w", encoding="utf-8") as infile:
+    infile.write("This is the first line.\n")
+    infile.write("Python makes automation simple.\n")
+    infile.write("Text processing is very useful.\n")
+    infile.write("Let's count some words together.\n")
+    infile.write("The possibilities are endless!\n")
+
+try:
+    filename = input("Enter the name of the file to process: ")
+
+    with open(filename, "r", encoding="utf-8") as infile:
+        content = infile.read()
+
+    word_count = len(content.split())
+    uppercase_content = content.upper()
+
+    with open("output.txt", "w", encoding="utf-8") as outfile:
+        outfile.write(uppercase_content)
+        outfile.write(f"\n\nWORD COUNT: {word_count}\n")
+
+    print(" Success! 'output.txt' has been created with processed content.")
+
+except FileNotFoundError:
+    print(" Error: File not found. Please check the filename and try again.")
+except PermissionError:
+    print(" Error: Permission denied. Unable to read the file.")
+except Exception as e:
+    print(f" Unexpected error: {e}")
